@@ -10,5 +10,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //지혜 ㅎㅇ
+        //여기서 바꾸면 언니한테도 그렇게 떠?
     }
 }
