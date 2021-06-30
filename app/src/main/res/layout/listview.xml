@@ -17,7 +17,7 @@
             android:gravity="right">
 
             <Button
-                android:id="@+id/del_food"
+                android:id="@+id/del"
                 android:layout_width="40dp"
                 android:layout_height="27dp"></Button>
         </LinearLayout>

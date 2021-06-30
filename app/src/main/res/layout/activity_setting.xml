@@ -8,17 +8,19 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="설정"/>
+        android:text="설정" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_weight="2"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,13 +31,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="밥 시간 설정"/>
+            android:text="밥 시간 설정" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right">
+            android:gravity="right"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,14 +53,17 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_food"
         android:layout_width="wrap_content"
-        android:layout_height="261dp"></ListView>
+        android:layout_height="wrap_content"
+        android:layout_weight="3" />
 
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,13 +74,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="약 시간 설정"/>
+            android:text="약 시간 설정" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right">
+            android:gravity="right"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -91,9 +96,11 @@
         </LinearLayout>
     </LinearLayout>
 
-
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_medicine"
         android:layout_width="wrap_content"
-        android:layout_height="261dp"></ListView>
+        android:layout_height="wrap_content"
+        android:layout_weight="3" />
+
 
 </LinearLayout>
