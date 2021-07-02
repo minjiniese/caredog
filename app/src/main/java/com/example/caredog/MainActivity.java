@@ -11,5 +11,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //창준오빠 ㅎㅇ
         //ㅎㅇㅎㅇ
+        //현우오빠 ㅎㅇ ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ
+        //add -> commit -> push
+        //창준오빠 ㅎㅇ
+        //ㅎㅇㅎㅇ
     }
 }
