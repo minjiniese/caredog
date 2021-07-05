@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"> <!-- 버튼을 눌렀을 때 -->
+        <shape>
+            <solid android:color="#9B9B9B"> <!-- 배경 색상 설정 -->
+
+            </solid>
+            <corners android:radius="20dp"> <!-- 모서리 둥글게 -->
+
+            </corners>
+        </shape>
+    </item>
+</selector>
