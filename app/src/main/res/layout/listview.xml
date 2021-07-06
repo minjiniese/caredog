@@ -6,20 +6,21 @@
 
         <TextClock
             android:id="@+id/clock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="시간 들어올 자리"></TextClock>
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="시간 들어올 자리"
+            android:gravity="left|center"
+            android:layout_weight="8"></TextClock>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right">
 
-            <Button
-                android:id="@+id/del"
-                android:layout_width="40dp"
-                android:layout_height="27dp"></Button>
-        </LinearLayout>
+    <ImageButton
+        android:id="@+id/del"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:backgroundTint="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@drawable/throw1" />
 
 </LinearLayout>

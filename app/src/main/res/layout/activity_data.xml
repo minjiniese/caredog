@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="20"
+    android:weightSum="22"
     android:padding="20dp">
 
 
@@ -39,18 +39,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:weightSum="18"
         android:gravity="center">
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="9"
             android:text="####년 ##월 ##일 ~ ##일"/>
 
-        <Button
-            android:layout_width="28dp"
-            android:layout_height="match_parent" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00000000"
+            android:scaleType="fitCenter"
+            android:src="@drawable/calander"/>
     </LinearLayout>
 
     <LinearLayout
