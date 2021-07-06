@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:weightSum="20"
+    android:padding="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="50dp">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_back_pressed"
+            android:src="@drawable/arrow_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="회원가입"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="ID(이메일 주소) *"
+                android:background="@color/white"
+                android:layout_marginBottom="20dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <android.widget.Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="#8800FF"
+            android:text="중복확인"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="비밀번호 *"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="이름 *"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <RadioButton
+            android:text="남자"
+            android:id="@+id/rg_btn1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:text="여자"
+            android:id="@+id/rg_btn2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="휴대전화번호 *"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="50dp">
+
+        <!-- background 색상 설정이 안먹어서 이걸로 함 -->
+        <android.widget.Button
+            android:id="@+id/sign_user_next"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_background"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:text="다음"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <!--
+    아이디/이름 지정
+    android:id="@+id/이름
+
+    android:gravity="center"
+    텍스트 정렬
+
+    android:textColor="#8800FF"
+    텍스트 색 지정
+
+    android:textSize="20sp"
+    텍스트 크기 지정
+
+    android:layout_gravity=""
+    부모를 기준으로 나의 위치 정렬
+
+    LinearLayout
+    가로 or 세로 배치
+    orientation="horizontal" 가로
+    orientation="vertical" 세로
+
+    RelativeLayout
+    관계를 통한 배치
+    android:layout_centerInParent="true"
+    부모로부터 가로/세로 가운데 정렬
+    android:layout_toLeftOf/toRightOf="@+id/이름"
+    이름을 갖는 특정 요소로부터 좌/우 배치
+    android:layout_above/below="@+id/이름"
+    이름을 갖는 특정 요소로부터 위/아래 배치
+    android:layout_centerVertical="true"
+    세로의 중앙 배치
+    android:layout_centerHorizontal="true"
+    가로의 중앙 배치
+
+    android:background=""
+    배경색 지정
+
+    android:weightSum="숫자"
+    레이아웃에 전체 비중 숫자 지정
+
+    android:layout_weight="숫자"
+    각각의 요소가 레이아웃의 전체 비중에서 차지할 비율
+    -->
+
+</LinearLayout>
