@@ -4,13 +4,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextClock
+        <TextView
             android:id="@+id/clock"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="시간 들어올 자리"
             android:gravity="left|center"
-            android:layout_weight="8"></TextClock>
+            android:layout_weight="8"></TextView>
 
 
     <ImageButton

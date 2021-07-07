@@ -1,18 +1,46 @@
 package com.example.caredog;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextClock;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Adapter extends RecyclerView.Adapter<Holder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
-    ArrayList<String> list;
+    private final ArrayList<String> list;
+
+    public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView time;
+        ImageButton del_time;
+
+        public Holder(@NonNull View itemView) {
+            super(itemView);
+
+            time = itemView.findViewById(R.id.clock);
+            del_time = itemView.findViewById(R.id.del);
+            del_time.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            int pos = getAdapterPosition();
+            if(pos != RecyclerView.NO_POSITION) {
+                list.remove(pos);
+                notifyItemRemoved(pos);
+                //갱신
+                notifyItemChanged(pos);
+            }
+
+        }
+    }
 
     Adapter(ArrayList<String> list) {
         this.list = list;
@@ -36,12 +64,6 @@ public class Adapter extends RecyclerView.Adapter<Holder> {
     public int getItemCount() {
         return list.size();
     }
+
 }
 
-class Holder extends RecyclerView.ViewHolder {
-    TextClock time;
-    public Holder(@NonNull View itemView) {
-        super(itemView);
-        time = itemView.findViewById(R.id.clock);
-    }
-}

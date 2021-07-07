@@ -5,82 +5,78 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class settingActivity extends AppCompatActivity {
     ArrayList<String> list1;
     ArrayList<String> list2;
-    int hour = 0, min = 0;
+    private TimePickerDialog.OnTimeSetListener callbackMethod1;
+    private TimePickerDialog.OnTimeSetListener callbackMethod2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        list1 = new ArrayList<>();
-        list1.add("아이템 1");
-        list1.add("아이템 2");
-        list1.add("아이템 3");
-        list1.add("아이템 4");
-        list1.add("아이템 5");
-        list1.add("아이템 6");
-        Adapter adapter = new Adapter(list1);
-        RecyclerView recyclerView = findViewById(R.id.list_food);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        this.InitializeListener1();
+        this.InitializeListener2();
 
+        list1 = new ArrayList<>();
+        list2 = new ArrayList<>();
 
         //뒤로가기 버튼을 누르면 메인 화면으로 이동
         ImageButton setting_back = (ImageButton) findViewById(R.id.setting_back);
-        setting_back.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        setting_back.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         ImageButton add_food = (ImageButton) findViewById(R.id.add_food);
-        //밥 시간 추가 버튼 클릭 이벤트
-        add_food.setOnClickListener(new View.OnClickListener() {
+        add_food.setOnClickListener(this::OnClickHandler1);
 
-            @Override
-            public void onClick(View v) {
+        ImageButton add_medicine = (ImageButton) findViewById(R.id.add_medicine);
+        add_medicine.setOnClickListener(this::OnClickHandler2);
+    }
 
-                TimePickerDialog mTimePickerDialog = new TimePickerDialog(
-                        settingActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+    //밥 시간 list저장 후 recyclerView에 등록
+    public void InitializeListener1() {
+        callbackMethod1 = (view, hourOfDay, minute) -> {
+            list1.add(hourOfDay + "시 " + minute + "분");
 
-                    }
-                }, hour, min, false);
-                mTimePickerDialog.show();
-                // 시간 입력받아서 리스트 추가하는 작업부터 하세요
-            }
-        });
+            Adapter adapter1 = new Adapter(list1);
+            RecyclerView recyclerView1 = findViewById(R.id.list_food);
+            recyclerView1.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+            recyclerView1.setAdapter(adapter1);
+        };
+    }
+
+    //약 시간 list저장 후 recyclerView에 등록
+    public void InitializeListener2() {
+        callbackMethod2 = (view, hourOfDay, minute) -> {
+            list2.add(hourOfDay + "시 " + minute + "분");
+
+            Adapter adapter2 = new Adapter(list2);
+            RecyclerView recyclerView2 = findViewById(R.id.list_medicine);
+            recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+            recyclerView2.setAdapter(adapter2);
+        };
+    }
+
+    //밥 추가 클릭 핸들러
+    public void OnClickHandler1(View view) {
+        TimePickerDialog dialog = new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, callbackMethod1, 8, 10, true);
+        dialog.show();
+    }
+
+    //약 추가 클릭 핸들러
+    public void OnClickHandler2(View view) {
+        TimePickerDialog dialog = new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, callbackMethod2, 8, 10, true);
+        dialog.show();
     }
 }
 
-//                TimepickerFragment mTimePickerFragment = new TimepickerFragment();
-//                mTimePickerFragment.show(getSupportFragmentManager(), TimepickerFragment.FRAGMENT_TAG);
-//                list2 = new ArrayList<>();
-//                list2.add("아이템");
-//
-//                Adapter adapter2 = new Adapter(list2);
-//                RecyclerView recyclerView2 = findViewById(R.id.list_medicine);
-//                recyclerView2.setLayoutManager(new LinearLayoutManager(this));
-//                recyclerView2.setAdapter(adapter);
-//            }
-//        }));
-//    }
-//}
