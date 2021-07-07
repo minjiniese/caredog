@@ -43,7 +43,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView_date"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -51,13 +51,14 @@
             android:text="####년 ##월 ##일 ~ ##일"/>
 
         <ImageButton
+            android:id="@+id/calender"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:adjustViewBounds="true"
             android:backgroundTint="#00000000"
             android:scaleType="fitCenter"
-            android:src="@drawable/calander"/>
+            android:src="@drawable/calender"/>
     </LinearLayout>
 
     <LinearLayout
