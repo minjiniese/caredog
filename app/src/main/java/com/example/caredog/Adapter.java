@@ -91,5 +91,4 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
     public int getItemCount() {
         return list.size();
     }
-
 }

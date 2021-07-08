@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -41,14 +40,9 @@ public class dataActivity extends AppCompatActivity {
 
     public void InitializeListener()
     {
-        callbackMethod = new DatePickerDialog.OnDateSetListener()
-        {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
-            {
-                monthOfYear = monthOfYear + 1;
-                textView_date.setText(year + "년 " + monthOfYear + "월 " + dayOfMonth + "일");
-            }
+        callbackMethod = (view, year, monthOfYear, dayOfMonth) -> {
+            monthOfYear = monthOfYear + 1;
+            textView_date.setText(year + "년 " + monthOfYear + "월 " + dayOfMonth + "일");
         };
     }
 
