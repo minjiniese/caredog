@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
     private final ArrayList<String> list;
-    private final int num;
+    private final String list_name;
     Context mContext = settingActivity.mContext;
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView time;
@@ -42,7 +42,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
                 String time;
 
                 //밥 시간 삭제
-                if (num == 1) {
+                if (list_name.equals("food")) {
                     int num_food = preferenceData.getJ(mContext, "num_food");
                     for (int i = pos + 1; i <= num_food; i++) {
                         time = preferenceData.getString(mContext, "time_food" + i);
@@ -52,7 +52,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
                     }
                     preferenceData.removeKey(mContext, "time_food" + num_food);
                     preferenceData.setJ(mContext, "num_food", --num_food);
-                } else { // 약 시간 삭제
+                }
+                // 약 시간 삭제
+                else {
                     int num_medicine = preferenceData.getJ(mContext, "num_medicine");
                     for (int i = pos + 1; i <= num_medicine; i++) {
                         time = preferenceData.getString(mContext, "time_medicine" + i);
@@ -67,9 +69,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
         }
     }
 
-    Adapter(int num, ArrayList<String> list) {
+    Adapter(String list_name, ArrayList<String> list) {
         this.list = list;
-        this.num = num;
+        this.list_name = list_name;
     }
 
     @NonNull
@@ -78,7 +80,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = inflater.inflate(R.layout.recyclerview_food, parent, false);
+        View view = inflater.inflate(R.layout.recyclerview, parent, false);
         return new Holder(view);
     }
 

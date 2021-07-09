@@ -38,7 +38,7 @@ public class settingActivity extends AppCompatActivity {
         list1 = new ArrayList<>();
         list2 = new ArrayList<>();
 
-        //저장된 밥 시간 정보 불러오기
+        //저장된 밥 시간 정보 list에 불러오기
         num_food = preferenceData.getJ(mContext,"num_food");
         for(int i = 1; i<= num_food; i++) {
             time = preferenceData.getString(mContext,"time_food"+i);
@@ -47,7 +47,8 @@ public class settingActivity extends AppCompatActivity {
             }
         }
 
-        Adapter adapter1 = new Adapter(1,list1);
+        //list에 저장된 정보 recyclerView에 등록
+        Adapter adapter1 = new Adapter("food",list1);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         recyclerView1.setAdapter(adapter1);
         adapter1.notifyDataSetChanged();
@@ -61,7 +62,8 @@ public class settingActivity extends AppCompatActivity {
             }
         }
 
-        Adapter adapter2 = new Adapter(2,list2);
+        //list에 저장된 정보 recyclerView에 등록
+        Adapter adapter2 = new Adapter("medicine",list2);
         recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         recyclerView2.setAdapter(adapter2);
         adapter2.notifyDataSetChanged();
@@ -79,7 +81,6 @@ public class settingActivity extends AppCompatActivity {
 
         ImageButton add_medicine = (ImageButton) findViewById(R.id.add_medicine);
         add_medicine.setOnClickListener(this::OnClickHandler2);
-
     }
 
     //밥 시간 list저장 후 recyclerView에 등록
@@ -88,7 +89,7 @@ public class settingActivity extends AppCompatActivity {
             time = hourOfDay + "시 " + minute + "분";
             list1.add(time);
 
-            Adapter adapter1 = new Adapter(1,list1);
+            Adapter adapter1 = new Adapter("food",list1);
             RecyclerView recyclerView1 = findViewById(R.id.recyclerView_food);
             recyclerView1.setLayoutManager(new LinearLayoutManager(getBaseContext()));
             recyclerView1.setAdapter(adapter1);
@@ -106,7 +107,7 @@ public class settingActivity extends AppCompatActivity {
             time = hourOfDay + "시 " + minute + "분";
             list2.add(time);
 
-            Adapter adapter2 = new Adapter(2,list2);
+            Adapter adapter2 = new Adapter("medicine",list2);
             RecyclerView recyclerView2 = findViewById(R.id.recyclerView_medicine);
             recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext()));
             recyclerView2.setAdapter(adapter2);
