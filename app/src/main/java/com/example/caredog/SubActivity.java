@@ -20,6 +20,7 @@ public class SubActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
+            //지혜2
         });
     }
 }
