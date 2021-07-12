@@ -1,0 +1,7 @@
+com/example/caredog/BuildConfig.java
+ com.example.caredog.BuildConfig
+com/example/caredog/MainActivity.java
+ com.example.caredog.MainActivity
+ com.example.caredog.MainActivity$1
+com/example/caredog/SubActivity.java
+ com.example.caredog.SubActivity
