@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SubActivity.class);
                 startActivity(intent);
+                //창준오빠 2입니다
             }
         });
     }
