@@ -1,4 +1,4 @@
-package com.example.caredog_test;
+package com.example.caredog;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
