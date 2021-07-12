@@ -1,4 +1,4 @@
-package com.example.caredog_test;
+package com.example.caredog;
 
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
