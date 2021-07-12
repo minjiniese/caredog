@@ -1,11 +1,11 @@
 package com.example.caredog;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,16 +14,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //메인 화면으로 가기 버튼~
-        Button mainButton = (Button) findViewById(R.id.button);
-        mainButton.setOnClickListener(new View.OnClickListener() {
+        //첫화면 가기
+        Button Button1 = (Button) findViewById(R.id.button1);
+        Button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SubActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
                 startActivity(intent);
-                //창준오빠 2입니다
+            }
+        });
+
+        //지도화면 가기
+        Button Button2 = (Button) findViewById(R.id.button2);
+        Button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), GooglemapActivity.class);
+                startActivity(intent);
             }
         });
     }
 }
-
