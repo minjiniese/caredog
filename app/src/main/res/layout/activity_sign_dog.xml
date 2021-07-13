@@ -77,7 +77,7 @@
 
         <ImageButton
             android:id="@+id/born_button"
-            android:layout_width="20dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:onClick="OnClickHandler"
             android:layout_centerVertical="true"
