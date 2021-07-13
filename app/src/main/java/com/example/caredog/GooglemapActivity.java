@@ -26,8 +26,6 @@ public class GooglemapActivity extends AppCompatActivity implements OnMapReadyCa
         fragmentManager = getFragmentManager();
         mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.googleMap);
         mapFragment.getMapAsync(this);
-
-
     }
 
     //구글맵 준비되면 호출
