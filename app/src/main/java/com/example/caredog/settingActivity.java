@@ -71,8 +71,6 @@ public class settingActivity extends AppCompatActivity {
         //뒤로가기 버튼을 누르면 메인 화면으로 이동
         ImageButton setting_back = (ImageButton) findViewById(R.id.setting_back);
         setting_back.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ChangjoonMainActivity.class);
-            startActivity(intent);
             finish();
         });
 

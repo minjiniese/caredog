@@ -48,13 +48,16 @@ public class Sign_Dog_Activity extends AppCompatActivity implements AdapterView.
 
         //뒤로가기 버튼을 누르면 회원가입_사용자 화면으로 이동
         ImageButton sign_dog_back = (ImageButton) findViewById(R.id.sign_dog_back);
-        sign_dog_back.setOnClickListener(new View.OnClickListener() {
+        sign_dog_back.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Sign_User_Activity.class);
+            startActivity(intent);
+            finish();
+        });
 
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
+        //완료 버튼을 누르면 회원가입_사용자 화면으로 이동
+        Button complete = (Button) findViewById(R.id.complete);
+        complete.setOnClickListener(view -> {
+            finish();
         });
     }
     @Override
