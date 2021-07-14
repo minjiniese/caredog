@@ -21,8 +21,8 @@
 
         <activity android:name=".LoginActivity"></activity>
 
-        <activity android:name=".Sign_Dog_Activity"></activity>
-        <activity android:name=".Sign_User_Activity"></activity>
+        <activity android:name=".SignUp2_Dog_Activity"></activity>
+        <activity android:name=".SignUp1_User_Activity"></activity>
 
         <activity android:name=".MainActivity"></activity>
 

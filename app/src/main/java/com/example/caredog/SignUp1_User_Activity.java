@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Sign_User_Activity extends AppCompatActivity {
+public class SignUp1_User_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class Sign_User_Activity extends AppCompatActivity {
         sign_user_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Sign_Dog_Activity.class);
+                Intent intent = new Intent(getApplicationContext(), SignUp2_Dog_Activity.class);
                 startActivity(intent);
                 finish();
             }

@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
-public class Sign_Dog_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText dog_type;
     Spinner dog_spinner;
     String[] item;
@@ -49,7 +49,7 @@ public class Sign_Dog_Activity extends AppCompatActivity implements AdapterView.
         //뒤로가기 버튼을 누르면 회원가입_사용자 화면으로 이동
         ImageButton sign_dog_back = (ImageButton) findViewById(R.id.sign_dog_back);
         sign_dog_back.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Sign_User_Activity.class);
+            Intent intent = new Intent(getApplicationContext(), SignUp1_User_Activity.class);
             startActivity(intent);
             finish();
         });

@@ -29,7 +29,7 @@ public class FirstActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Sign_User_Activity.class);
+                Intent intent = new Intent(getApplicationContext(), SignUp1_User_Activity.class);
                 startActivity(intent);
             }
         });

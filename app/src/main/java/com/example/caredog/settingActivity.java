@@ -2,7 +2,6 @@ package com.example.caredog;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -39,34 +38,34 @@ public class settingActivity extends AppCompatActivity {
         list2 = new ArrayList<>();
 
         //저장된 밥 시간 정보 list에 불러오기
-        num_food = preferenceData.getJ(mContext,"num_food");
+        num_food = settingActivity_preferenceData.getJ(mContext,"num_food");
         for(int i = 1; i<= num_food; i++) {
-            time = preferenceData.getString(mContext,"time_food"+i);
+            time = settingActivity_preferenceData.getString(mContext,"time_food"+i);
             if (!time.equals("")) {
                 list1.add(time);
             }
         }
 
         //list에 저장된 정보 recyclerView에 등록
-        Adapter adapter1 = new Adapter("food",list1);
+        settingActivity_Adapter settingActivityAdapter1 = new settingActivity_Adapter("food",list1);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-        recyclerView1.setAdapter(adapter1);
-        adapter1.notifyDataSetChanged();
+        recyclerView1.setAdapter(settingActivityAdapter1);
+        settingActivityAdapter1.notifyDataSetChanged();
 
         //저장된 약 시간 정보 불러오기
-        num_medicine = preferenceData.getJ(mContext,"num_medicine");
+        num_medicine = settingActivity_preferenceData.getJ(mContext,"num_medicine");
         for(int i = 1; i<= num_medicine; i++) {
-            time = preferenceData.getString(mContext,"time_medicine"+i);
+            time = settingActivity_preferenceData.getString(mContext,"time_medicine"+i);
             if (!time.equals("")) {
                 list2.add(time);
             }
         }
 
         //list에 저장된 정보 recyclerView에 등록
-        Adapter adapter2 = new Adapter("medicine",list2);
+        settingActivity_Adapter settingActivityAdapter2 = new settingActivity_Adapter("medicine",list2);
         recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-        recyclerView2.setAdapter(adapter2);
-        adapter2.notifyDataSetChanged();
+        recyclerView2.setAdapter(settingActivityAdapter2);
+        settingActivityAdapter2.notifyDataSetChanged();
 
         //뒤로가기 버튼을 누르면 메인 화면으로 이동
         ImageButton setting_back = (ImageButton) findViewById(R.id.setting_back);
@@ -87,14 +86,14 @@ public class settingActivity extends AppCompatActivity {
             time = hourOfDay + "시 " + minute + "분";
             list1.add(time);
 
-            Adapter adapter1 = new Adapter("food",list1);
+            settingActivity_Adapter settingActivityAdapter1 = new settingActivity_Adapter("food",list1);
             RecyclerView recyclerView1 = findViewById(R.id.recyclerView_food);
             recyclerView1.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-            recyclerView1.setAdapter(adapter1);
+            recyclerView1.setAdapter(settingActivityAdapter1);
 
             //preferenceData 저장
-            preferenceData.setJ(mContext,"num_food",++num_food);
-            preferenceData.setString(mContext,"time_food"+ num_food,time);
+            settingActivity_preferenceData.setJ(mContext,"num_food",++num_food);
+            settingActivity_preferenceData.setString(mContext,"time_food"+ num_food,time);
             Toast.makeText(settingActivity.this,"밥 시간이 추가되었습니다",Toast.LENGTH_SHORT).show();
         };
     }
@@ -105,14 +104,14 @@ public class settingActivity extends AppCompatActivity {
             time = hourOfDay + "시 " + minute + "분";
             list2.add(time);
 
-            Adapter adapter2 = new Adapter("medicine",list2);
+            settingActivity_Adapter settingActivityAdapter2 = new settingActivity_Adapter("medicine",list2);
             RecyclerView recyclerView2 = findViewById(R.id.recyclerView_medicine);
             recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-            recyclerView2.setAdapter(adapter2);
+            recyclerView2.setAdapter(settingActivityAdapter2);
 
             //preferenceData 저장
-            preferenceData.setJ(mContext,"num_medicine",++num_medicine);
-            preferenceData.setString(mContext,"time_medicine"+ num_medicine,time);
+            settingActivity_preferenceData.setJ(mContext,"num_medicine",++num_medicine);
+            settingActivity_preferenceData.setString(mContext,"time_medicine"+ num_medicine,time);
             Toast.makeText(settingActivity.this,"약 시간이 추가되었습니다",Toast.LENGTH_SHORT).show();
         };
     }
