@@ -76,8 +76,8 @@ public class dataActivity extends AppCompatActivity {
         //뒤로가기 버튼을 누르면 메인 화면으로 이동
         ImageButton data_back = (ImageButton) findViewById(R.id.data_back);
         data_back.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(getApplicationContext(), ChangjoonMainActivity.class);
+//            startActivity(intent);
             finish();
         });
 

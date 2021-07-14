@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
+public class settingActivity_Adapter extends RecyclerView.Adapter<settingActivity_Adapter.Holder> {
 
     private final ArrayList<String> list;
     private final String list_name;
@@ -43,33 +43,33 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
                 //밥 시간 삭제
                 if (list_name.equals("food")) {
-                    int num_food = preferenceData.getJ(mContext, "num_food");
+                    int num_food = settingActivity_preferenceData.getJ(mContext, "num_food");
                     for (int i = pos + 1; i <= num_food; i++) {
-                        time = preferenceData.getString(mContext, "time_food" + i);
+                        time = settingActivity_preferenceData.getString(mContext, "time_food" + i);
                         if (!time.equals("")) {
-                            preferenceData.setString(mContext, "time_food" + pos, time);
+                            settingActivity_preferenceData.setString(mContext, "time_food" + pos, time);
                         }
                     }
-                    preferenceData.removeKey(mContext, "time_food" + num_food);
-                    preferenceData.setJ(mContext, "num_food", --num_food);
+                    settingActivity_preferenceData.removeKey(mContext, "time_food" + num_food);
+                    settingActivity_preferenceData.setJ(mContext, "num_food", --num_food);
                 }
                 // 약 시간 삭제
                 else {
-                    int num_medicine = preferenceData.getJ(mContext, "num_medicine");
+                    int num_medicine = settingActivity_preferenceData.getJ(mContext, "num_medicine");
                     for (int i = pos + 1; i <= num_medicine; i++) {
-                        time = preferenceData.getString(mContext, "time_medicine" + i);
+                        time = settingActivity_preferenceData.getString(mContext, "time_medicine" + i);
                         if (!time.equals("")) {
-                            preferenceData.setString(mContext, "time_medicine" + pos, time);
+                            settingActivity_preferenceData.setString(mContext, "time_medicine" + pos, time);
                         }
                     }
-                    preferenceData.removeKey(mContext, "time_medicine" + num_medicine);
-                    preferenceData.setJ(mContext, "num_medicine", --num_medicine);
+                    settingActivity_preferenceData.removeKey(mContext, "time_medicine" + num_medicine);
+                    settingActivity_preferenceData.setJ(mContext, "num_medicine", --num_medicine);
                 }
             }
         }
     }
 
-    Adapter(String list_name, ArrayList<String> list) {
+    settingActivity_Adapter(String list_name, ArrayList<String> list) {
         this.list = list;
         this.list_name = list_name;
     }

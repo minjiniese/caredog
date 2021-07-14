@@ -3,7 +3,7 @@ package com.example.caredog;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class preferenceData {
+public class settingActivity_preferenceData {
     private static SharedPreferences getPreferences(Context context) {
         return context.getSharedPreferences("pref",context.MODE_PRIVATE);
     }
