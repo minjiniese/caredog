@@ -10,23 +10,24 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 //implements OnMapReadyCallback 구글맵 준비되면 호출
 public class GooglemapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-//    private FragmentManager fragmentManager;//전역변수 설정
-//    private MapFragment mapFragment;
+    private FragmentManager fragmentManager;//전역변수 설정
+    private MapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_googlemap);
 
-//        fragmentManager = getFragmentManager();
-//        mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.googleMap);
-//        mapFragment.getMapAsync(this);
+        fragmentManager = getFragmentManager();
+        mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.googleMap);
+        mapFragment.getMapAsync(this);
 
         //뒤로가기 버튼을 누르면 메인 화면으로 이동
         ImageButton map_back = (ImageButton) findViewById(R.id.map_back);

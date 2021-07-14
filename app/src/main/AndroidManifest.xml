@@ -32,6 +32,10 @@
 
         <activity android:name=".GooglemapActivity"></activity>
 
+        <!--구글API key-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDLtCoCRY-hNpnqlK7rEcmLuYyS71xwiI4" />
     </application>
 
 </manifest>
