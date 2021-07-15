@@ -25,9 +25,9 @@ import java.util.Locale;
 public class dataActivity extends AppCompatActivity {
     private TextView textView_date;
     private DatePickerDialog.OnDateSetListener callbackMethod;
-    ArrayList<Integer> jsonList1 = new ArrayList<>(); // ArrayList 선언
+    ArrayList jsonList1 = new ArrayList<>(); // ArrayList 선언
     ArrayList<String> labelList1 = new ArrayList<>(); // ArrayList 선언
-    ArrayList<Integer> jsonList2 = new ArrayList<>(); // ArrayList 선언
+    ArrayList jsonList2 = new ArrayList<>(); // ArrayList 선언
     ArrayList<String> labelList2 = new ArrayList<>(); // ArrayList 선언
     BarChart barChart1;
     BarChart barChart2;
