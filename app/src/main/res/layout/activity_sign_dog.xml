@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:weightSum="20"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:context=".SignUp2_Dog_Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="50dp">
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/sign_dog_back"
@@ -21,114 +20,149 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:background="@drawable/arrow_back_pressed"
-            android:src="@drawable/arrow_back"/>
+            android:src="@drawable/arrow_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:text="회원가입"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/black"/>
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
     </RelativeLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="반려견 이름 *"
             android:background="@color/white"
-            android:layout_marginBottom="20dp"/>
+            android:hint="반려견 이름 *" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <Spinner
             android:id="@+id/dog_spinner"
-            android:hint="견종 *"
             android:layout_width="match_parent"
-            android:layout_height="60dp" />
+            android:layout_height="60dp"
+            android:hint="견종 *" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/dog_type"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
-                android:hint="견종 *"
+                android:layout_marginBottom="20dp"
                 android:background="@color/white"
-                android:layout_marginBottom="20dp"/>
+                android:hint="견종 *" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_marginTop="20dp">
 
-        <ImageButton
-            android:id="@+id/born_button"
-            android:layout_width="30dp"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="OnClickHandler"
-            android:layout_centerVertical="true"
-            android:background="@color/white"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/calendar_image"/>
+            android:layout_weight="2.4"
+            android:text="강아지 생일 *" />
 
         <TextView
             android:id="@+id/born_text"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:background="@color/white"
             android:gravity="center"
             android:text="날짜 정보" />
-    </RelativeLayout>
 
+        <ImageButton
+            android:id="@+id/born_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:onClick="OnClickHandler"
+            android:src="@drawable/calendar_image" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:orientation="horizontal"
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <RadioButton
-            android:text="암컷"
-            android:id="@+id/rg_btn1"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="성별 *"></TextView>
 
-        <RadioButton
-            android:text="수컷"
-            android:id="@+id/rg_btn2"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content" />
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:text="암컷(중성화)"
-            android:id="@+id/rg_btn3"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content" />
+            <RadioButton
+                android:id="@+id/rg_btn1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="암컷" />
 
-        <RadioButton
-            android:text="수컷(중성화)"
-            android:id="@+id/rg_btn4"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content" />
+            <RadioButton
+                android:id="@+id/rg_btn2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="수컷" />
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/rg_btn3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:background="@color/white"
+                android:text="암컷(중성화)" />
+
+            <RadioButton
+                android:id="@+id/rg_btn4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:background="@color/white"
+                android:text="수컷(중성화)" />
+
+        </RadioGroup>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
         android:paddingBottom="40dp">
 
         <!-- background 색상 설정이 안먹어서 이걸로 함 -->
@@ -136,12 +170,12 @@
             android:id="@+id/complete"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
             android:background="@drawable/btn_background"
+            android:text="확인"
             android:textColor="@color/white"
             android:textSize="30dp"
-            android:textStyle="bold"
-            android:text="확인"
-            android:layout_alignParentBottom="true"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <!--
