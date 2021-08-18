@@ -2,11 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.caredog">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="caredog"
@@ -14,36 +11,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Caredog">
 
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-
-        <!--구글API key-->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC-ehG3IW-dc9m3bR9pE2mcyAzb-Gjgb0o" />
-        <!--            android:value="AIzaSyDLtCoCRY-hNpnqlK7rEcmLuYyS71xwiI4"-->
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-        <activity android:name=".dbActivity">
+        <activity android:name=".FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".FirstActivity">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <activity android:name=".LoginActivity"></activity>
 
-<!--        <activity android:name=".LoginActivity"></activity>-->
-<!--        <activity android:name=".SignUp2_Dog_Activity"></activity>-->
-<!--        <activity android:name=".SignUp1_User_Activity"></activity>-->
-<!--        <activity android:name=".MainActivity"></activity>-->
-<!--        <activity android:name=".dataActivity"></activity>-->
-<!--        <activity android:name=".settingActivity"></activity>-->
-<!--        <activity android:name=".GooglemapActivity"></activity>-->
+        <activity android:name=".SignUp2_Dog_Activity"></activity>
+        <activity android:name=".SignUp1_User_Activity"></activity>
+
+        <activity android:name=".MainActivity"></activity>
+
+        <activity android:name=".dataActivity"></activity>
+
+        <activity android:name=".settingActivity"></activity>
+
+        <activity android:name=".GooglemapActivity"></activity>
 
     </application>
 
