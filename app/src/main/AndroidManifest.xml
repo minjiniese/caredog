@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.caredog">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -9,9 +11,10 @@
         android:label="caredog"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Caredog">
+        android:theme="@style/Theme.Caredog"
+        android:usesCleartextTraffic="true">
 
-        <activity android:name=".FirstActivity">
+        <activity android:name=".dbActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,18 +22,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity"></activity>
+<!--        <activity android:name=".LoginActivity"></activity>-->
 
-        <activity android:name=".SignUp2_Dog_Activity"></activity>
-        <activity android:name=".SignUp1_User_Activity"></activity>
+<!--        <activity android:name=".SignUp2_Dog_Activity"></activity>-->
+<!--        <activity android:name=".SignUp1_User_Activity"></activity>-->
 
-        <activity android:name=".MainActivity"></activity>
+<!--        <activity android:name=".MainActivity"></activity>-->
 
-        <activity android:name=".dataActivity"></activity>
+<!--        <activity android:name=".dataActivity"></activity>-->
 
-        <activity android:name=".settingActivity"></activity>
+<!--        <activity android:name=".settingActivity"></activity>-->
 
-        <activity android:name=".GooglemapActivity"></activity>
+<!--        <activity android:name=".GooglemapActivity"></activity>-->
 
     </application>
 
