@@ -26,7 +26,7 @@ import java.net.URL;
 public class dbActivity extends AppCompatActivity {
 
     private static String TAG = "caredog";
-    private static String IP_ADDRESS = "117.17.73.193:3036";
+    private static String IP_ADDRESS = "117.17.73.193:3306";
 
     private EditText mEditTextName;
     private EditText mEditTextAge;

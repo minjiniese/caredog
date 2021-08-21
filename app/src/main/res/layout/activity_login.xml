@@ -55,5 +55,9 @@
         android:layout_margin="30dp"
         android:textStyle="bold" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/textView_result" />
 
 </LinearLayout>

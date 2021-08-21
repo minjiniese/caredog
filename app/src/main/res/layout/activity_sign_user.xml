@@ -45,6 +45,7 @@
             android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:id="@+id/editText_id"
                 android:layout_height="60dp"
                 android:hint="ID(이메일 주소) *"
                 android:background="@color/white"
@@ -70,6 +71,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:id="@+id/editText_pw"
             android:layout_height="60dp"
             android:hint="비밀번호 *"
             android:layout_marginBottom="20dp"
@@ -81,6 +83,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:id="@+id/editText_name"
             android:layout_height="60dp"
             android:hint="이름 *"
             android:layout_marginBottom="20dp"
@@ -95,13 +98,13 @@
 
         <RadioButton
             android:text="남자"
-            android:id="@+id/rg_btn1"
+            android:id="@+id/rg_male"
             android:layout_width="100dp"
             android:layout_height="wrap_content" />
 
         <RadioButton
             android:text="여자"
-            android:id="@+id/rg_btn2"
+            android:id="@+id/rg_female"
             android:layout_width="100dp"
             android:layout_height="wrap_content" />
 
@@ -112,6 +115,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:id="@+id/editText_ph"
             android:layout_height="60dp"
             android:hint="휴대전화번호 *"
             android:layout_marginBottom="20dp"
@@ -122,6 +126,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="50dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/textView_result" />
 
         <!-- background 색상 설정이 안먹어서 이걸로 함 -->
         <android.widget.Button
