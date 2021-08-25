@@ -29,7 +29,6 @@
             android:paddingRight="10dp"
             app:srcCompat="@drawable/outline_power_settings_new_black_20" />
 
-
     </LinearLayout>
 
     <LinearLayout
