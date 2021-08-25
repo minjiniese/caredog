@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -76,11 +75,18 @@ public class SignUp1_User_Activity extends AppCompatActivity {
             InsertData task = new InsertData();
             task.execute("http://" + IP_ADDRESS + "/signupuser.php", id, pw, name, sex, ph);
 
+            try {
+                Thread.sleep(5000);
+                if(mTextViewResult.equals("1")) {
+                    Intent intent = new Intent(getApplicationContext(), SignUp2_Dog_Activity.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+                    finish();
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-//            Intent intent = new Intent(getApplicationContext(), SignUp2_Dog_Activity.class);
-//            intent.putExtra("id", id);
-//            startActivity(intent);
-//            finish();
         });
 
         //뒤로가기 버튼을 누르면 메인 화면으로 이동
@@ -131,8 +137,8 @@ public class SignUp1_User_Activity extends AppCompatActivity {
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
 
-                httpURLConnection.setReadTimeout(10000);
-                httpURLConnection.setConnectTimeout(10000);
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.connect();
 

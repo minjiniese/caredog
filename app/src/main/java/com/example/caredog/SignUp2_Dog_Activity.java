@@ -105,7 +105,17 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
             SignUp2_Dog_Activity.InsertData task = new SignUp2_Dog_Activity.InsertData();
             task.execute("http://" + IP_ADDRESS + "/signupdog.php", id, dogname, dogtype, dogsex, date);
 
-            finish();
+            try {
+                Thread.sleep(5000);
+                if(mTextViewResult.equals("1")) {
+                    Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         });
 
         //뒤로가기 버튼을 누르면 회원가입_사용자 화면으로 이동
@@ -173,13 +183,13 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
         protected String doInBackground(String... params) {
 
             String id = (String) params[1];
-            String pw = (String) params[2];
-            String name = (String) params[3];
-            String sex = (String) params[4];
-            String ph = (String) params[5];
+            String dogname = (String) params[2];
+            String dogtype = (String) params[3];
+            String date = (String) params[4];
+            String dogsex = (String) params[5];
 
             String serverURL = (String) params[0];
-            String postParameters = "&id=" + id + "&pw=" + pw + "&name=" + name + "&sex=" + sex + "&ph=" + ph;
+            String postParameters = "&id=" + id + "&dogname=" + dogname + "&dogtype=" + dogtype + "&date=" + date + "&dogsex=" + dogsex;
 
 
             try {

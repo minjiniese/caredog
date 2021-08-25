@@ -45,9 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(intent);
-//                finish();
                 String id = mEditTextid.getText().toString();
                 String pw = mEditTextpw.getText().toString();
 
@@ -55,6 +52,19 @@ public class LoginActivity extends AppCompatActivity {
                 task.execute("http://" + IP_ADDRESS + "/login.php", id, pw);
 
                 mEditTextpw.setText("");
+
+                try {
+                    Thread.sleep(5000);
+                    if(mTextViewResult.equals("1")) {
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                        finish();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
