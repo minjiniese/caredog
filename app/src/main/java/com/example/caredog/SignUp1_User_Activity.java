@@ -56,7 +56,7 @@ public class SignUp1_User_Activity extends AppCompatActivity {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.rg_male:
                         sex = "male";
                         break;
@@ -66,34 +66,28 @@ public class SignUp1_User_Activity extends AppCompatActivity {
                 }
             }
         });
-        sign_user_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        sign_user_next.setOnClickListener(view -> {
 
-                String id = mEditTextid.getText().toString();
-                String pw = mEditTextpw.getText().toString();
-                String name = mEditTextname.getText().toString();
-                String ph = mEditTextph.getText().toString();
-                sex = "male";
-                SignUp1_User_Activity.InsertData task = new SignUp1_User_Activity.InsertData();
-                task.execute("http://" + IP_ADDRESS + "/insert.php", id, pw, name, sex, ph);
+            String id = mEditTextid.getText().toString();
+            String pw = mEditTextpw.getText().toString();
+            String name = mEditTextname.getText().toString();
+            String ph = mEditTextph.getText().toString();
+            sex = "male";
+            InsertData task = new InsertData();
+            task.execute("http://" + IP_ADDRESS + "/signupuser.php", id, pw, name, sex, ph);
 
 
-//                mEditTextid.setText("");
-//                mEditTextpw.setText("");
-//                mEditTextname.setText("");
-//                sex = "";
-//                mEditTextph.setText("");
-
-//                Intent intent = new Intent(getApplicationContext(), SignUp2_Dog_Activity.class);
-//                startActivity(intent);
-//                finish();
-            }
+//            Intent intent = new Intent(getApplicationContext(), SignUp2_Dog_Activity.class);
+//            intent.putExtra("id", id);
+//            startActivity(intent);
+//            finish();
         });
 
         //뒤로가기 버튼을 누르면 메인 화면으로 이동
         ImageButton sign_user_back = (ImageButton) findViewById(R.id.sign_user_back);
-        sign_user_back.setOnClickListener(view -> { finish(); });
+        sign_user_back.setOnClickListener(view -> {
+            finish();
+        });
     }
 
     class InsertData extends AsyncTask<String, Void, String> {
