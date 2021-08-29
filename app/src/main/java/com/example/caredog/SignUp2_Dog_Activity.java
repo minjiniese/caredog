@@ -32,7 +32,7 @@ import java.util.Calendar;
 public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static String TAG = "caredog";
-    private static String IP_ADDRESS = "117.17.73.193:3306";
+    private static String IP_ADDRESS = "39.115.62.183:30100";
 
     Intent intent = getIntent();
     String id = intent.getStringExtra("id");
