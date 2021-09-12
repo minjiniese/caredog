@@ -53,30 +53,32 @@ public class LoginActivity extends AppCompatActivity {
 
                 mEditTextpw.setText("");
 
-                try {
-                    Thread.sleep(5000);
-                    if(mTextViewResult.equals("1")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.putExtra("id", id);
-                        startActivity(intent);
-                        finish();
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                intent.putExtra("id", id);
+//                startActivity(intent);
+//                finish();
+
+//                try {
+//                    Thread.sleep(5000);
+//                    if(mTextViewResult.equals("1")) {
+//                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                        intent.putExtra("id", id);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
 
             }
         });
 
         //회원가입으로 이동
         Button signupButton = (Button) findViewById(R.id.signupButton);
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignUp1_User_Activity.class);
-                startActivity(intent);
-                finish();
-            }
+        signupButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), SignUp1_User_Activity.class);
+            startActivity(intent);
+            finish();
         });
     }
 

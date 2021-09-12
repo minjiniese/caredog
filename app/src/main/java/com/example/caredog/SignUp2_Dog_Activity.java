@@ -35,8 +35,8 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
     private static String IP_ADDRESS = "39.115.62.183:3306";
 
     Intent intent = getIntent();
-    String id = intent.getStringExtra("id");
-
+//    String id = intent.getStringExtra("id");
+    String id = "aaaa";
     EditText dog_name;
     EditText dog_type;
     Spinner dog_spinner;

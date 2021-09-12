@@ -12,6 +12,9 @@
         android:gravity="right"
         android:orientation="horizontal"
         android:paddingTop="10dp">
+        <ImageSwitcher
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/bt_setting"
@@ -116,9 +119,9 @@
             app:srcCompat="@drawable/outline_place_black_20" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/image"
             android:layout_width="190dp"
-            android:layout_height="190dp"
+            android:layout_height="195dp"
             android:layout_gravity="center"
             android:paddingBottom="10dp"
             android:src="@drawable/rprp"
@@ -189,7 +192,7 @@
 
             <TextView
                 android:id="@+id/textView12"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -198,7 +201,7 @@
 
             <TextView
                 android:id="@+id/textView11"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -207,7 +210,7 @@
 
             <TextView
                 android:id="@+id/textView10"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"

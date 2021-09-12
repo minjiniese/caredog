@@ -31,8 +31,8 @@ public class settingActivity extends AppCompatActivity {
         this.InitializeListener2();
         mContext = this;
 
-        recyclerView1 = (RecyclerView) findViewById(R.id.recyclerView_food);
-        recyclerView2 = (RecyclerView) findViewById(R.id.recyclerView_medicine);
+        recyclerView1 = findViewById(R.id.recyclerView_food);
+        recyclerView2 = findViewById(R.id.recyclerView_medicine);
 
         list1 = new ArrayList<>();
         list2 = new ArrayList<>();

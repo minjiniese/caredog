@@ -2,7 +2,6 @@ package com.example.caredog;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,15 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Intent intent = getIntent();
-    String id = intent.getStringExtra("id");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //다음 버튼을 누르면 회원가입_반려견 화면으로 이동
+        ImageView bt_image = findViewById(R.id.image);
+        bt_image.setOnClickListener(view -> {
+
+        });
+
         ImageView bt_setting =  findViewById(R.id.bt_setting);
         bt_setting.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), settingActivity.class);
@@ -44,4 +44,5 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
 }

@@ -57,10 +57,10 @@ public class SignUp1_User_Activity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rg_male:
-                        sex = "male";
+                        sex = "m";
                         break;
                     case R.id.rg_female:
-                        sex = "female";
+                        sex = "f";
                         break;
                 }
             }
@@ -71,20 +71,19 @@ public class SignUp1_User_Activity extends AppCompatActivity {
             String pw = mEditTextpw.getText().toString();
             String name = mEditTextname.getText().toString();
             String ph = mEditTextph.getText().toString();
-            sex = "male";
             InsertData task = new InsertData();
             task.execute("http://" + IP_ADDRESS + "/signupuser.php", id, pw, name, sex, ph);
 
             try {
                 Thread.sleep(5000);
-                if(mTextViewResult.equals("1")) {
-                    Intent intent = new Intent(getApplicationContext(), SignUp2_Dog_Activity.class);
-                    intent.putExtra("id", id);
-                    startActivity(intent);
-                    finish();
-                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }
+            if(mTextViewResult.equals('1')) {
+                Intent intent = new Intent(getApplicationContext(), SignUp2_Dog_Activity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+                finish();
             }
 
         });
