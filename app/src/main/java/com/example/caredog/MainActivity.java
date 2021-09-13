@@ -9,10 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent2 = getIntent();
+        id = intent2.getStringExtra("userid");
 
         ImageView bt_image = findViewById(R.id.image);
         bt_image.setOnClickListener(view -> {

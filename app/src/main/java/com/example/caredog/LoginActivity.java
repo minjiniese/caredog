@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEditTextid;
     private EditText mEditTextpw;
     private TextView mTextViewResult;
-
+    char result2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,24 +53,6 @@ public class LoginActivity extends AppCompatActivity {
                 task.execute("http://" + IP_ADDRESS + "/login.php", id, pw);
 
                 mEditTextpw.setText("");
-
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                intent.putExtra("id", id);
-//                startActivity(intent);
-//                finish();
-
-//                try {
-//                    Thread.sleep(5000);
-//                    if(mTextViewResult.equals("1")) {
-//                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                        intent.putExtra("id", id);
-//                        startActivity(intent);
-//                        finish();
-//                    }
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-
             }
         });
 
@@ -99,7 +82,18 @@ public class LoginActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
+            result2 = result.toString().charAt(0);
+
             mTextViewResult.setText(result);
+
+            if(result2 == '1') {
+                Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("id", mEditTextid.getText().toString());
+                startActivity(intent);
+                finish();
+            }
+
             Log.d(TAG, "POST response  - " + result);
         }
 

@@ -124,7 +124,7 @@
             android:layout_height="195dp"
             android:layout_gravity="center"
             android:paddingBottom="10dp"
-            android:src="@drawable/rprp"
+            android:src="@drawable/maltees"
             app:civ_border_color="#FF000000"
             app:civ_border_width="1dp"
             tools:ignore="MissingConstraints" />

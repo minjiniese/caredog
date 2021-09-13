@@ -11,8 +11,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.common.api.Response;
+
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -27,14 +32,15 @@ public class SignUp1_User_Activity extends AppCompatActivity {
     private static String IP_ADDRESS = "39.115.62.183:3306";
 
 
-    private EditText mEditTextid;
-    private EditText mEditTextpw;
-    private EditText mEditTextname;
-    private RadioGroup radiogroup;
-    private EditText mEditTextph;
-    private TextView mTextViewResult;
-    private String sex;
-
+    EditText mEditTextid;
+    EditText mEditTextpw;
+    EditText mEditTextname;
+    RadioGroup radiogroup;
+    EditText mEditTextph;
+    TextView mTextViewResult;
+    String sex;
+    String id;
+    char result2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,40 +57,24 @@ public class SignUp1_User_Activity extends AppCompatActivity {
         mTextViewResult = (TextView) findViewById(R.id.textView_result);
         mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
 
-        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rg_male:
-                        sex = "m";
-                        break;
-                    case R.id.rg_female:
-                        sex = "f";
-                        break;
-                }
+        radiogroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.rg_male:
+                    sex = "m";
+                    break;
+                case R.id.rg_female:
+                    sex = "f";
+                    break;
             }
         });
         sign_user_next.setOnClickListener(view -> {
 
-            String id = mEditTextid.getText().toString();
+            id = mEditTextid.getText().toString();
             String pw = mEditTextpw.getText().toString();
             String name = mEditTextname.getText().toString();
             String ph = mEditTextph.getText().toString();
             InsertData task = new InsertData();
             task.execute("http://" + IP_ADDRESS + "/signupuser.php", id, pw, name, sex, ph);
-
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            if(mTextViewResult.equals('1')) {
-                Intent intent = new Intent(getApplicationContext(), SignUp2_Dog_Activity.class);
-                intent.putExtra("id", id);
-                startActivity(intent);
-                finish();
-            }
 
         });
 
@@ -112,7 +102,16 @@ public class SignUp1_User_Activity extends AppCompatActivity {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
+            result2 = result.toString().charAt(0);
+
             mTextViewResult.setText(result);
+
+            if(result2 == '1') {
+                Intent intent = new Intent(getApplicationContext(), SignUp2_Dog_Activity.class);
+                intent.putExtra("userid", id);
+                startActivity(intent);
+            }
+
             Log.d(TAG, "POST response  - " + result);
         }
 
@@ -181,7 +180,6 @@ public class SignUp1_User_Activity extends AppCompatActivity {
 
                 return new String("Error: " + e.getMessage());
             }
-
         }
     }
 }

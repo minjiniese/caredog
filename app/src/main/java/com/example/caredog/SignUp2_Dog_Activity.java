@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,20 +35,18 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
     private static String TAG = "caredog";
     private static String IP_ADDRESS = "39.115.62.183:3306";
 
-    Intent intent = getIntent();
-//    String id = intent.getStringExtra("id");
-    String id = "aaaa";
+    String id;
     EditText dog_name;
     EditText dog_type;
     Spinner dog_spinner;
     String[] item;
     RadioGroup radiogroup;
     String dogsex;
-    private TextView mTextViewResult;
-    private TextView born_text;
-    private DatePickerDialog.OnDateSetListener callbackMethod;
+    TextView mTextViewResult;
+    TextView born_text;
+    DatePickerDialog.OnDateSetListener callbackMethod;
     Calendar calendar = Calendar.getInstance();
-
+    char result2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +56,8 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
         this.InitializeView();
         this.InitializeListener();
 
+        Intent intent = getIntent();
+        id = intent.getStringExtra("userid");
         dog_name = (EditText)findViewById(R.id.editText_dogname) ;
         dog_type = (EditText)findViewById(R.id.editText_dogtype);
         dog_spinner = (Spinner)findViewById(R.id.dog_spinner);
@@ -73,24 +74,20 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
 
         dog_spinner.setAdapter(adapter);
 
-        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
-                    case R.id.rg_female:
-                        dogsex = "female";
-                        break;
-                    case R.id.rg_male:
-                        dogsex = "male";
-                        break;
-                    case R.id.rg_neuterfemale:
-                        dogsex = "neuterfemale";
-                        break;
-                    case R.id.rg_neutermale:
-                        dogsex = "neutermale";
-                        break;
-                }
+        radiogroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId){
+                case R.id.rg_female:
+                    dogsex = "female";
+                    break;
+                case R.id.rg_male:
+                    dogsex = "male";
+                    break;
+                case R.id.rg_neuterfemale:
+                    dogsex = "neuterfemale";
+                    break;
+                case R.id.rg_neutermale:
+                    dogsex = "neutermale";
+                    break;
             }
         });
 
@@ -105,24 +102,13 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
             SignUp2_Dog_Activity.InsertData task = new SignUp2_Dog_Activity.InsertData();
             task.execute("http://" + IP_ADDRESS + "/signupdog.php", id, dogname, dogtype, dogsex, date);
 
-            try {
-                Thread.sleep(5000);
-                if(mTextViewResult.equals("1")) {
-                    Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
         });
 
         //뒤로가기 버튼을 누르면 회원가입_사용자 화면으로 이동
         ImageButton sign_dog_back = (ImageButton) findViewById(R.id.sign_dog_back);
         sign_dog_back.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), SignUp1_User_Activity.class);
-            startActivity(intent);
+            Intent intent2 = new Intent(getApplicationContext(), SignUp1_User_Activity.class);
+            startActivity(intent2);
             finish();
         });
     }
@@ -143,12 +129,7 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
 
     public void InitializeListener()
     {
-        callbackMethod = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                born_text.setText(year + "-" + month + "-" + dayOfMonth);
-            }
-        };
+        callbackMethod = (view, year, month, dayOfMonth) -> born_text.setText(year + "-" + month + "-" + dayOfMonth);
     }
 
     public void OnClickHandler(View view)
@@ -174,7 +155,18 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
             super.onPostExecute(result);
 
             progressDialog.dismiss();
+            result2 = result.toString().charAt(0);
+
             mTextViewResult.setText(result);
+
+            if(result2 == '1') {
+                Toast.makeText(getApplicationContext(), "회원가입 성공", Toast.LENGTH_LONG).show();
+                Intent intent3 = new Intent(getApplicationContext(), LoginActivity.class);
+                intent3.putExtra("id", id);
+                startActivity(intent3);
+                finish();
+            }
+
             Log.d(TAG, "POST response  - " + result);
         }
 
