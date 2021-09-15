@@ -43,17 +43,14 @@ public class LoginActivity extends AppCompatActivity {
 
         //메인화면으로 이동
         Button loginButton = (Button) findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String id = mEditTextid.getText().toString();
-                String pw = mEditTextpw.getText().toString();
+        loginButton.setOnClickListener(view -> {
+            String id = mEditTextid.getText().toString();
+            String pw = mEditTextpw.getText().toString();
 
-                LoginActivity.InsertData task = new LoginActivity.InsertData();
-                task.execute("http://" + IP_ADDRESS + "/login.php", id, pw);
+            InsertData task = new InsertData();
+            task.execute("http://" + IP_ADDRESS + "/login.php", id, pw);
 
-                mEditTextpw.setText("");
-            }
+            mEditTextpw.setText("");
         });
 
         //회원가입으로 이동
@@ -105,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
             String pw = (String) params[2];
 
             String serverURL = (String) params[0];
-            String postParameters = "id=" + id + "&pw=" + pw;
+            String postParameters = "&id=" + id + "&pw=" + pw;
 
 
             try {

@@ -72,9 +72,9 @@ public class SignUp1_User_Activity extends AppCompatActivity {
             id = mEditTextid.getText().toString();
             String pw = mEditTextpw.getText().toString();
             String name = mEditTextname.getText().toString();
-            String ph = mEditTextph.getText().toString();
+            String phone = mEditTextph.getText().toString();
             InsertData task = new InsertData();
-            task.execute("http://" + IP_ADDRESS + "/signupuser.php", id, pw, name, sex, ph);
+            task.execute("http://" + IP_ADDRESS + "/signupuser.php", id, pw, sex, phone, name);
 
         });
 
@@ -123,10 +123,10 @@ public class SignUp1_User_Activity extends AppCompatActivity {
             String pw = (String) params[2];
             String name = (String) params[3];
             String sex = (String) params[4];
-            String ph = (String) params[5];
+            String phone = (String) params[5];
 
             String serverURL = (String) params[0];
-            String postParameters = "&id=" + id + "&pw=" + pw + "&name=" + name + "&sex=" + sex + "&ph=" + ph;
+            String postParameters = "&id=" + id + "&pw=" + pw + "&sex=" + sex + "&phone=" + phone + "&name=" + name;
 
 
             try {
