@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
@@ -28,7 +27,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -98,9 +99,8 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
             String dogname = dog_name.getText().toString();
             String dogtype = dog_type.getText().toString();
             String date = born_text.getText().toString();
-            dogsex = "male";
             SignUp2_Dog_Activity.InsertData task = new SignUp2_Dog_Activity.InsertData();
-            task.execute("http://" + IP_ADDRESS + "/signupdog.php", id, dogname, dogtype, dogsex, date);
+            task.execute("http://" + IP_ADDRESS + "/signupdog.php", id, dogname, dogtype, date, dogsex);
 
         });
 
@@ -129,7 +129,7 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
 
     public void InitializeListener()
     {
-        callbackMethod = (view, year, month, dayOfMonth) -> born_text.setText(year + "-" + month + "-" + dayOfMonth);
+        callbackMethod = (view, year, month, dayOfMonth) -> born_text.setText(year + "-" + (month+1) + "-" + dayOfMonth);
     }
 
     public void OnClickHandler(View view)
