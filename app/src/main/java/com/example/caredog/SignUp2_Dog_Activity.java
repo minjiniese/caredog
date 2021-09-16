@@ -77,16 +77,16 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
         radiogroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId){
                 case R.id.rg_female:
-                    dogsex = "female";
+                    dogsex = "f";
                     break;
                 case R.id.rg_male:
-                    dogsex = "male";
+                    dogsex = "m";
                     break;
                 case R.id.rg_neuterfemale:
-                    dogsex = "neuterfemale";
+                    dogsex = "nf";
                     break;
                 case R.id.rg_neutermale:
-                    dogsex = "neutermale";
+                    dogsex = "nm";
                     break;
             }
         });
