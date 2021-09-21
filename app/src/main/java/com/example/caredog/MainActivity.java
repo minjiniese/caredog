@@ -24,12 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        ImageView bt_setting =  findViewById(R.id.bt_setting);
-        bt_setting.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), settingActivity.class);
-            startActivity(intent);
-        });
-
         ImageView bt_logout =  findViewById(R.id.bt_logout);
         bt_logout.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
