@@ -8,10 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="right"
         android:orientation="horizontal"
         android:paddingTop="10dp">
+
+
+
         <ImageSwitcher
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -36,198 +40,196 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingTop="40dp"
-        android:paddingBottom="20dp">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="날씨"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="대기수준"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:gravity="center"
-            tools:ignore="MissingConstraints" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="34sp"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:textSize="34sp"
-            tools:ignore="MissingConstraints" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/sancheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="60dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="TextView"
-        android:textSize="20sp"
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="3"
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/bt_map"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/outline_place_black_20" />
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/image"
-            android:layout_width="190dp"
-            android:layout_height="195dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
             android:layout_gravity="center"
             android:paddingBottom="10dp"
-            android:src="@drawable/maltees"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="1dp"
+            android:src="@drawable/dog"
             tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="TextView"
-            tools:ignore="MissingConstraints" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dogname"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:autoSizeTextType="uniform"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="우리가 함께 한 시간, ***일"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:autoSizeTextType="uniform"
+                tools:ignore="MissingConstraints"/>
+        </LinearLayout>
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
         android:orientation="vertical"
         android:paddingTop="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingTop="10dp">
 
             <TextView
-                android:id="@+id/data1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/heart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="data1"
-                android:textSize="34sp"
+                android:autoSizeTextType="uniform"
+                android:letterSpacing="0.2"
+                android:textColor="@color/black"
+                android:text="심박수"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/data2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/data_heart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="data"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/walk"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:letterSpacing="0.2"
+                android:text="걸음수"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/data_walk"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:text="data2"
-                android:textSize="34sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/data3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="data3"
-                android:textSize="34sp"
-                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingTop="10dp">
 
             <TextView
-                android:id="@+id/textView12"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="심박수"
-                android:textSize="24sp" />
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:text="위치 찾기"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView11"
+            <ImageView
+                android:id="@+id/bt_map"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="걸음수"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="이동거리"
-                android:textSize="24sp" />
+                app:srcCompat="@drawable/outline_place_black_20" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/bt_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="right"
-            android:paddingTop="30dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="10dp"
-            android:text="자세히 보기>>" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:text="초음파 센서"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/sensor"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.1"
+                android:switchMinWidth="60dp"
+                android:gravity="center"
+                android:track="@xml/switch_track_selector"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -42,12 +42,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), GooglemapActivity.class);
             startActivity(intent);
         });
-
-        TextView bt_data =  findViewById(R.id.bt_data);
-        bt_data.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), dataActivity.class);
-            startActivity(intent);
-        });
     }
 
 }
