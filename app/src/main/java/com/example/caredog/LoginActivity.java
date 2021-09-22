@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEditTextpw;
     private TextView mTextViewResult;
     char result2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
