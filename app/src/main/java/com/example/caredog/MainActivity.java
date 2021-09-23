@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private static String IP_ADDRESS = "39.115.62.183:3306";
     private TextView dogname;
     private TextView date;
+    private String mJsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         dogname = findViewById(R.id.dogname);
         date = findViewById(R.id.date);
-//        Intent intent2 = getIntent();
-//        id = intent2.getStringExtra("userid");
-        id = "a";
+        Intent intent2 = getIntent();
+        id = intent2.getStringExtra("id");
         MainActivity.InsertData task = new MainActivity.InsertData();
         task.execute("http://" + IP_ADDRESS + "/mainpage.php", id);
 
@@ -70,15 +74,15 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            dogname.setText(result);
-//            date.setText(result);
 
-//            if(result2 == '1') {
-//                Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_LONG).show();
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
+            if (result == null){
+
+            }
+            else {
+
+                mJsonString = result;
+                showResult();
+            }
             Log.d(TAG, "POST response  - " + result);
         }
 
@@ -140,6 +144,33 @@ public class MainActivity extends AppCompatActivity {
 //                Log.d(TAG, "InsertData: Error ", e);
 
                 return new String("Error: " + e.getMessage());
+            }
+
+        }
+        private void showResult(){
+
+            String TAG_JSON="webnautes";
+            String TAG_DOGNAME = "dogname";
+            String TAG_DATE = "date";
+
+
+            try {
+                JSONObject jsonObject = new JSONObject(mJsonString);
+                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+
+                for(int i=0;i<jsonArray.length();i++){
+
+                    JSONObject item = jsonArray.getJSONObject(i);
+
+                    String dogname1 = item.getString(TAG_DOGNAME);
+                    String date1 = item.getString(TAG_DATE);
+                    dogname.setText(dogname1);
+                    date.setText("우리가 함께한 시간, "+date1+"일");
+                }
+
+            } catch (JSONException e) {
+
+                Log.d(TAG, "showResult : ", e);
             }
 
         }
