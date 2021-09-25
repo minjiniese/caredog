@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/white"
     tools:context=".FirstActivity">
 
     <ImageView
@@ -24,6 +25,7 @@
         android:text="로그인"
         android:textColor="@color/white"
         android:textSize="30dp"
+        android:fontFamily="@font/jalnan"
         android:layout_margin="0dp"
         android:textStyle="bold" />
 
@@ -37,6 +39,7 @@
         android:textColor="@color/white"
         android:textSize="30dp"
         android:layout_margin="30dp"
+        android:fontFamily="@font/jalnan"
         android:textStyle="bold" />
 
 

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="20"
+    android:background="@color/white"
     android:padding="20dp">
 
     <RelativeLayout
@@ -29,6 +30,7 @@
             android:gravity="center"
             android:textSize="20dp"
             android:text="회원가입"
+            android:fontFamily="@font/jalnan"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:textColor="@color/black"/>
@@ -51,18 +53,6 @@
                 android:background="@color/white"
                 android:layout_marginBottom="20dp"/>
         </com.google.android.material.textfield.TextInputLayout>
-
-        <android.widget.Button
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="20dp"
-            android:background="#8800FF"
-            android:text="중복확인"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
 
@@ -142,6 +132,7 @@
             android:textSize="30dp"
             android:textStyle="bold"
             android:text="다음"
+            android:fontFamily="@font/jalnan"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 
