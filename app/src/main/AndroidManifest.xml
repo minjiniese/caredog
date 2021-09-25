@@ -14,8 +14,8 @@
         android:theme="@style/Theme.Caredog"
         android:usesCleartextTraffic="true">
         <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/switch_track_selector" />
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC-ehG3IW-dc9m3bR9pE2mcyAzb-Gjgb0o" />
 
         <uses-library
             android:name="org.apache.http.legacy"

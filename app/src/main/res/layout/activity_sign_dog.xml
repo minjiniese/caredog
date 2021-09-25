@@ -156,48 +156,4 @@
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 
-    <!--
-    아이디/이름 지정
-    android:id="@+id/이름
-
-    android:gravity="center"
-    텍스트 정렬
-
-    android:textColor="#8800FF"
-    텍스트 색 지정
-
-    android:textSize="20sp"
-    텍스트 크기 지정
-
-    android:layout_gravity=""
-    부모를 기준으로 나의 위치 정렬
-
-    LinearLayout
-    가로 or 세로 배치
-    orientation="horizontal" 가로
-    orientation="vertical" 세로
-
-    RelativeLayout
-    관계를 통한 배치
-    android:layout_centerInParent="true"
-    부모로부터 가로/세로 가운데 정렬
-    android:layout_toLeftOf/toRightOf="@+id/이름"
-    이름을 갖는 특정 요소로부터 좌/우 배치
-    android:layout_above/below="@+id/이름"
-    이름을 갖는 특정 요소로부터 위/아래 배치
-    android:layout_centerVertical="true"
-    세로의 중앙 배치
-    android:layout_centerHorizontal="true"
-    가로의 중앙 배치
-
-    android:background=""
-    배경색 지정
-
-    android:weightSum="숫자"
-    레이아웃에 전체 비중 숫자 지정
-
-    android:layout_weight="숫자"
-    각각의 요소가 레이아웃의 전체 비중에서 차지할 비율
-    -->
-
 </LinearLayout>
