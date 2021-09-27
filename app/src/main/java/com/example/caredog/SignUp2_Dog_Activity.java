@@ -68,7 +68,7 @@ public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterVi
 
         dog_spinner.setOnItemSelectedListener(this);
 
-        item = new String[]{"강","아","지"};
+        item = new String[]{"maltese","poodle","bichon","Pomeranian","Chihuahua","mixed dog"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
