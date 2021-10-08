@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private static String IP_ADDRESS = "39.115.62.183:3306";
     private TextView dogname;
     private TextView date;
-    private String mJsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.InsertData task = new MainActivity.InsertData();
         task.execute("http://" + IP_ADDRESS + "/mainpage.php", id);
 
-        ImageView bt_logout =  findViewById(R.id.bt_logout);
+        ImageView bt_logout = findViewById(R.id.bt_logout);
         bt_logout.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
             startActivity(intent);
             finish();
         });
 
-        ImageView bt_map =  findViewById(R.id.bt_map);
+        ImageView bt_map = findViewById(R.id.bt_map);
         bt_map.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), GooglemapActivity.class);
             startActivity(intent);
@@ -74,14 +73,30 @@ public class MainActivity extends AppCompatActivity {
 
             progressDialog.dismiss();
 
-            if (result == null){
+            String TAG_JSON = "webnautes";
+            String TAG_DOGNAME = "dogname";
+            String TAG_DATE = "date";
 
-            }
-            else {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-                mJsonString = result;
-                showResult();
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    JSONObject item = jsonArray.getJSONObject(i);
+
+                    String dogname1 = item.getString(TAG_DOGNAME);
+                    String date1 = item.getString(TAG_DATE);
+                    dogname.setText(dogname1);
+                    date.setText("우리가 함께한 시간, " + date1 + "일");
+                }
+
+            } catch (JSONException e) {
+
+                Log.d(TAG, "showResult : ", e);
             }
+
+
             Log.d(TAG, "POST response  - " + result);
         }
 
@@ -146,32 +161,31 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-        private void showResult(){
-
-            String TAG_JSON="webnautes";
-            String TAG_DOGNAME = "dogname";
-            String TAG_DATE = "date";
-
-
-            try {
-                JSONObject jsonObject = new JSONObject(mJsonString);
-                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
-
-                for(int i=0;i<jsonArray.length();i++){
-
-                    JSONObject item = jsonArray.getJSONObject(i);
-
-                    String dogname1 = item.getString(TAG_DOGNAME);
-                    String date1 = item.getString(TAG_DATE);
-                    dogname.setText(dogname1);
-                    date.setText("우리가 함께한 시간, "+date1+"일");
-                }
-
-            } catch (JSONException e) {
-
-                Log.d(TAG, "showResult : ", e);
-            }
-
-        }
+//        private void showResult(){
+//
+//            String TAG_JSON="webnautes";
+//            String TAG_DOGNAME = "dogname";
+//            String TAG_DATE = "date";
+//
+//            try {
+//                JSONObject jsonObject = new JSONObject(mJsonString);
+//                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+//
+//                for(int i=0;i<jsonArray.length();i++){
+//
+//                    JSONObject item = jsonArray.getJSONObject(i);
+//
+//                    String dogname1 = item.getString(TAG_DOGNAME);
+//                    String date1 = item.getString(TAG_DATE);
+//                    dogname.setText(dogname1);
+//                    date.setText("우리가 함께한 시간, "+date1+"일");
+//                }
+//
+//            } catch (JSONException e) {
+//
+//                Log.d(TAG, "showResult : ", e);
+//            }
+//
+//        }
     }
 }
