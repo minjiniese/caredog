@@ -213,8 +213,8 @@
                 android:text="초음파 센서"
                 android:textStyle="bold" />
 
-            <Switch
-                android:id="@+id/sensor"
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/wavesensor"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2.1"

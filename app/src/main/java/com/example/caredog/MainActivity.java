@@ -7,9 +7,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
+import org.eclipse.paho.android.service.MqttAndroidClient;
+import org.eclipse.paho.client.mqttv3.DisconnectedBufferOptions;
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,20 +37,24 @@ public class MainActivity extends AppCompatActivity {
 
     String id;
 
+    private MqttAndroidClient mqttAndroidClient;
     private static String TAG = "caredog";
     private static String IP_ADDRESS = "39.115.62.183:3306";
     private TextView dogname;
     private TextView date;
+    SwitchCompat wavesensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        wavesensor = findViewById(R.id.wavesensor);
         dogname = findViewById(R.id.dogname);
         date = findViewById(R.id.date);
         Intent intent2 = getIntent();
         id = intent2.getStringExtra("id");
+
         MainActivity.InsertData task = new MainActivity.InsertData();
         task.execute("http://" + IP_ADDRESS + "/mainpage.php", id);
 
@@ -54,6 +70,106 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), GooglemapActivity.class);
             startActivity(intent);
         });
+
+        mqttAndroidClient = new MqttAndroidClient(this, "tcp://" + "39.115.62.183" + ":30400", MqttClient.generateClientId());
+
+
+        try {
+
+            IMqttToken token = mqttAndroidClient.connect(getMqttConnectionOption());    //mqtttoken 이라는것을 만들어 connect option을 달아줌
+
+            token.setActionCallback(new IMqttActionListener() {
+
+                @Override
+
+                public void onSuccess(IMqttToken asyncActionToken) {
+
+                    mqttAndroidClient.setBufferOpts(getDisconnectedBufferOptions());    //연결에 성공한경우
+
+
+                    try {
+
+                        mqttAndroidClient.subscribe("caredog/sensor", 0);   //연결에 성공하면 jmlee 라는 토픽으로 subscribe함
+
+                    } catch (MqttException e) {
+
+                        e.printStackTrace();
+
+                    }
+
+                }
+
+
+                @Override
+
+                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {   //연결에 실패한경우
+
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
+
+                }
+
+            });
+
+        } catch (
+
+                MqttException e) {
+
+            e.printStackTrace();
+
+        }
+
+        wavesensor.setOnCheckedChangeListener((buttonView, isChecked) -> {
+
+            try {
+                if (wavesensor.isChecked()) {
+                    mqttAndroidClient.publish("caredog/sensor", "on".getBytes(), 0, false);
+                    Toast.makeText(getApplicationContext(), "sensor on", Toast.LENGTH_LONG).show();
+
+                } else {
+                    mqttAndroidClient.publish("caredog/sensor", "off".getBytes(), 0, false);
+                    Toast.makeText(getApplicationContext(), "sensor off", Toast.LENGTH_LONG).show();
+                }
+            } catch (MqttException e) {
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        mqttAndroidClient.setCallback(new MqttCallback() {  //클라이언트의 콜백을 처리하는부분
+
+            @Override
+
+            public void connectionLost(Throwable cause) {
+
+
+            }
+
+
+            @Override
+
+            public void messageArrived(String topic, MqttMessage message) throws Exception {    //모든 메시지가 올때 Callback method
+
+                if (topic.equals("caredog/sensor")) {     //topic 별로 분기처리하여 작업을 수행할수도있음
+
+                    String msg = new String(message.getPayload());
+
+
+//                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+
+
+            @Override
+
+            public void deliveryComplete(IMqttDeliveryToken token) {
+
+
+            }
+
+        });
+
+
     }
 
     class InsertData extends AsyncTask<String, Void, String> {
@@ -161,31 +277,36 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-//        private void showResult(){
-//
-//            String TAG_JSON="webnautes";
-//            String TAG_DOGNAME = "dogname";
-//            String TAG_DATE = "date";
-//
-//            try {
-//                JSONObject jsonObject = new JSONObject(mJsonString);
-//                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
-//
-//                for(int i=0;i<jsonArray.length();i++){
-//
-//                    JSONObject item = jsonArray.getJSONObject(i);
-//
-//                    String dogname1 = item.getString(TAG_DOGNAME);
-//                    String date1 = item.getString(TAG_DATE);
-//                    dogname.setText(dogname1);
-//                    date.setText("우리가 함께한 시간, "+date1+"일");
-//                }
-//
-//            } catch (JSONException e) {
-//
-//                Log.d(TAG, "showResult : ", e);
-//            }
-//
-//        }
+    }
+
+    private DisconnectedBufferOptions getDisconnectedBufferOptions() {
+
+        DisconnectedBufferOptions disconnectedBufferOptions = new DisconnectedBufferOptions();
+
+        disconnectedBufferOptions.setBufferEnabled(true);
+
+        disconnectedBufferOptions.setBufferSize(100);
+
+        disconnectedBufferOptions.setPersistBuffer(true);
+
+        disconnectedBufferOptions.setDeleteOldestMessages(false);
+
+        return disconnectedBufferOptions;
+
+    }
+
+
+    private MqttConnectOptions getMqttConnectionOption() {
+
+        MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
+
+        mqttConnectOptions.setCleanSession(false);
+
+        mqttConnectOptions.setAutomaticReconnect(true);
+
+        mqttConnectOptions.setWill("aaa", "I am going offline".getBytes(), 1, true);
+
+        return mqttConnectOptions;
+
     }
 }
