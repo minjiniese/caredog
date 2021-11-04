@@ -129,11 +129,11 @@ public class MainActivity extends AppCompatActivity {
             try {
                 if (wavesensor.isChecked()) {
                     mqttAndroidClient.publish("caredog/sensor", "on".getBytes(), 0, false);
-                    Toast.makeText(getApplicationContext(), "sensor on", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "sensor on", Toast.LENGTH_SHORT).show();
 
                 } else {
                     mqttAndroidClient.publish("caredog/sensor", "off".getBytes(), 0, false);
-                    Toast.makeText(getApplicationContext(), "sensor off", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "sensor off", Toast.LENGTH_SHORT).show();
                 }
             } catch (MqttException e) {
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();

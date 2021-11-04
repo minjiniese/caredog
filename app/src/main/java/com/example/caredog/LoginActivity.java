@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             mTextViewResult.setText(result);
 
             if(result2 == '1') {
-                Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("id", mEditTextid.getText().toString());
                 startActivity(intent);
