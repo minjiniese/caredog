@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     private static String IP_ADDRESS = "39.115.62.183:3306";
     private TextView dogname;
     private TextView date;
+    private TextView dataheart;
+    private TextView datawalk;
     SwitchCompat wavesensor;
 
     @Override
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         wavesensor = findViewById(R.id.wavesensor);
         dogname = findViewById(R.id.dogname);
         date = findViewById(R.id.date);
+        dataheart = findViewById(R.id.data_heart);
+        datawalk = findViewById(R.id.data_walk);
         Intent intent2 = getIntent();
         id = intent2.getStringExtra("id");
 
@@ -89,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
 
                     try {
 
-                        mqttAndroidClient.subscribe("caredog/sensor", 0);   //연결에 성공하면 jmlee 라는 토픽으로 subscribe함
+                        mqttAndroidClient.subscribe("caredog/sensor", 0);
+                        mqttAndroidClient.subscribe("caredog/BPM", 0);
+                        mqttAndroidClient.subscribe("caredog/stepCnt", 0);
 
                     } catch (MqttException e) {
 
@@ -148,13 +154,18 @@ public class MainActivity extends AppCompatActivity {
 
             public void messageArrived(String topic, MqttMessage message) throws Exception {    //모든 메시지가 올때 Callback method
 
-                if (topic.equals("caredog/sensor")) {     //topic 별로 분기처리하여 작업을 수행할수도있음
+
+                if (topic.equals("caredog/BPM")) {     //topic 별로 분기처리하여 작업을 수행할수도있음
 
                     String msg = new String(message.getPayload());
+                    dataheart.setText(msg);
 
+                }
 
-//                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                if (topic.equals("caredog/stepCnt")) {     //topic 별로 분기처리하여 작업을 수행할수도있음
 
+                    String msg = new String(message.getPayload());
+                    datawalk.setText(msg);
                 }
 
             }
