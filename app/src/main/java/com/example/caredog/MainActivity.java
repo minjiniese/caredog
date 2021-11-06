@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        mqttAndroidClient = new MqttAndroidClient(this, "tcp://" + "39.115.62.183" + ":30400", MqttClient.generateClientId());
+        mqttAndroidClient = new MqttAndroidClient(this, "tcp://" + "39.115.62.183" + ":30444", MqttClient.generateClientId());
 
 
         try {
