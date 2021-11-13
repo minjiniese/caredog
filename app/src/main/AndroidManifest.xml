@@ -37,8 +37,6 @@
         <activity android:name=".SignUp2_Dog_Activity" />
         <activity android:name=".SignUp1_User_Activity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".dataActivity" />
-        <activity android:name=".settingActivity" />
         <activity android:name=".GooglemapActivity" />
     </application>
 

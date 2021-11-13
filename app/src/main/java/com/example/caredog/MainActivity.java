@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MqttAndroidClient mqttAndroidClient;
     private static String TAG = "caredog";
-    private static String IP_ADDRESS = "39.115.62.183:3306";
+    private static String IP_ADDRESS = "39.115.62.183:33333";
     private TextView dogname;
     private TextView date;
     private TextView dataheart;

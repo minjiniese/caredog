@@ -29,7 +29,7 @@ import java.net.URL;
 public class SignUp1_User_Activity extends AppCompatActivity {
 
     private static String TAG = "caredog";
-    private static String IP_ADDRESS = "39.115.62.183:3306";
+    private static String IP_ADDRESS = "39.115.62.183:33333";
 
 
     EditText mEditTextid;

@@ -34,7 +34,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SignUp2_Dog_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static String TAG = "caredog";
-    private static String IP_ADDRESS = "39.115.62.183:3306";
+    private static String IP_ADDRESS = "39.115.62.183:33333";
 
     String id;
     EditText dog_name;
